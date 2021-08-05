@@ -1,0 +1,22 @@
+enum IngredientType {
+  FRUIT_AND_VEG
+  MEAT
+  SEAFOOD
+  BAKERY
+  DAIRY
+  EGGS
+  PANTRY
+  CHILLED
+  FROZEN
+}
+
+type Ingredient
+  @model(subscriptions: null)
+  @versioned
+  @auth(rules: [{ allow: owner, operations: [create, delete, update] }]) {
+  id: ID!
+  name: String!
+  type: IngredientType!
+  description: String
+  brand: String
+}
