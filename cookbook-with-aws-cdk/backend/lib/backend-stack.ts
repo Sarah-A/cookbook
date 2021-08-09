@@ -36,5 +36,44 @@ export class BackendStack extends cdk.Stack {
     new cdk.CfnOutput(this, "Stack Region", {
       value: this.region
     });
+
+    // Add Lambda function for resolving GraphQL Queries/mutations:
+    const recipesLambda = new lambda.Function(this, "AppSyncRecipesHandler", {
+      runtime: lambda.Runtime.NODEJS_14_X,
+      handler: "main.handler",
+      code: lambda.Code.fromAsset("lambda-fns"),
+      memorySize: 1024
+    });
+
+    // Set the new Lambda function as a data source for the AppSync API:
+    const lambdaDs = api.addLambdaDataSource("lambdaDatasource", recipesLambda);
+
+    // connect the GraphQL Resolvers to the LambdaDatasource we created above:
+
+    lambdaDs.createResolver({
+      typeName: "Query",
+      fieldName: "getRecipes"
+    });
+
+    lambdaDs.createResolver({
+      typeName: "Query",
+      fieldName: "getRecipeById"
+    });
+
+    lambdaDs.createResolver({
+      typeName: "Mutation",
+      fieldName: "createRecipe"
+    });
+
+    lambdaDs.createResolver({
+      typeName: "Mutation",
+      fieldName: "updateRecipe"
+    });
+
+    lambdaDs.createResolver({
+      typeName: "Mutation",
+      fieldName: "deleteRecipe"
+    });    
+
   }
 }
