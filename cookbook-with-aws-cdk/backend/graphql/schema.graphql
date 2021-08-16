@@ -11,6 +11,7 @@ type Recipe {
 }
 
 input NewRecipeInput {
+  id: ID!
   name: String!
   description: String  
   serves: Int!
@@ -18,7 +19,7 @@ input NewRecipeInput {
   method: String!
 }
 
-input UpdateRecipeInput {
+input UpdateRecipeInput {  
   name: String
   description: String
   image: String
@@ -28,12 +29,12 @@ input UpdateRecipeInput {
 }
 
 type Query {
-    getRecipes: [Recipe]
+    getAllRecipes: [Recipe]
     getRecipeById(id: ID!): Recipe
 }
 
 type Mutation {
-    createRecipe(input: NewRecipeInput!): Recipe
-    updateRecipe(id: ID!, input: UpdateRecipeInput!): Recipe
-    deleteRecipe(id: ID!): Recipe
+    createRecipe(recipe: NewRecipeInput!): Recipe
+    updateRecipe(id: ID!, recipe: UpdateRecipeInput!): Recipe
+    deleteRecipe(id: ID!): ID
 }

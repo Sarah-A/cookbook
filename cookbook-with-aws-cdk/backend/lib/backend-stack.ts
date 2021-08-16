@@ -52,7 +52,7 @@ export class BackendStack extends cdk.Stack {
 
     lambdaDs.createResolver({
       typeName: "Query",
-      fieldName: "getRecipes"
+      fieldName: "getAllRecipes"
     });
 
     lambdaDs.createResolver({
@@ -73,7 +73,23 @@ export class BackendStack extends cdk.Stack {
     lambdaDs.createResolver({
       typeName: "Mutation",
       fieldName: "deleteRecipe"
-    });    
+    }); 
+    
+    
+    // Add a DynamoDB Table:
+    const recipesTable = new ddb.Table(this, "CDKRecipesTable", {
+      billingMode: ddb.BillingMode.PAY_PER_REQUEST,
+      partitionKey: {
+        name: "id",
+        type: ddb.AttributeType.STRING
+      }
+    });
+
+    // enable the Lambda function to access the DynamoDB table (using IAM)
+    recipesTable.grantFullAccess(recipesLambda);
+
+    // create an environment variable that we will use in the function code:
+    recipesLambda.addEnvironment("RECIPES_TABLE", recipesTable.tableName);
 
   }
 }

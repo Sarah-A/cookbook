@@ -4,6 +4,10 @@ This is a blank project for TypeScript development with CDK.
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
+## Bootstrap CDK
+In order to deploy to your AWS account, you need to bootstrap CDK before running the ```cdk deploy``` command:
+```cdk bootstrap aws://account-id/account-reigon```
+
 ## Useful commands
 
  * `npm run build`   compile typescript to js
