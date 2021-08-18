@@ -32,7 +32,7 @@ const Recipes : FunctionComponent = () => {
     }, [])
 
     return (
-        <div>
+        <div className="text-warning">
             Queried Recipes!!
         </div>
     );
