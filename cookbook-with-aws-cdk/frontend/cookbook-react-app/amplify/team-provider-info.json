@@ -10,6 +10,11 @@
       "StackName": "amplify-cookbookreactapp-dev-110256",
       "StackId": "arn:aws:cloudformation:ap-southeast-2:475510584902:stack/amplify-cookbookreactapp-dev-110256/379405d0-0089-11ec-b2c4-0626f4c0f5f4",
       "AmplifyAppId": "d34f1yfnp8tloc"
+    },
+    "categories": {
+      "auth": {
+        "cookbookreactapp10b626d0": {}
+      }
     }
   }
 }

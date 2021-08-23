@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import './App.css';
 import Recipes from "./components/Recipes";
+import { withAuthenticator } from "aws-amplify-react";
 
 function App(): ReactElement {
   return (
@@ -15,4 +16,4 @@ function App(): ReactElement {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
