@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import { ReactElement } from 'react';
+import { AmplifyAuthenticator, AmplifySignUp, AmplifySignIn, AmplifySignOut} 
+  from "@aws-amplify/ui-react";
+import {signUpFields, signInFields} from './Amplify/CustomAmplifyFields';
 import './App.css';
 
-function App() {
+
+function App(): ReactElement {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AmplifyAuthenticator>
+        <AmplifySignUp slot="sign-up" formFields={signUpFields} />
+        <AmplifySignIn slot="sign-in" formFields={signInFields} />
+
+        <header className="App-header">
+          <AmplifySignOut />
+          <h1>CookBook</h1>
+        </header>      
+      </AmplifyAuthenticator>
     </div>
   );
 }

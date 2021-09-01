@@ -1,6 +1,6 @@
 import type { ReportHandler } from "web-vitals";
 
-const reportWebVitals = (onPerfEntry?: ReportHandler) : void => {
+const reportWebVitals = (onPerfEntry?: ReportHandler): void => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
     void import("web-vitals").then(
       ({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
@@ -9,7 +9,8 @@ const reportWebVitals = (onPerfEntry?: ReportHandler) : void => {
         getFCP(onPerfEntry);
         getLCP(onPerfEntry);
         getTTFB(onPerfEntry);
-    });
+      }
+    );
   }
 };
 
