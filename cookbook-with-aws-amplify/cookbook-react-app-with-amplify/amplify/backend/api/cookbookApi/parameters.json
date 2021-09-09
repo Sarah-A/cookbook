@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "cookbookApi",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authcookbook3ab5e61b",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
