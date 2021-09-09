@@ -16,20 +16,22 @@ const Recipe: FunctionComponent<RecipeType> = (props: RecipeType) => {
     console.log(`Add details for recipe ${id}`);
 
     return(
-        <div>
-            <h2>{name}</h2>
-            <p>Rating: {rating ? rating : ""}</p>
-            {prepTimeInMinutes 
-                && <p>Prep time (min): {prepTimeInMinutes} </p> 
-            }
-            {cookTimeInMinutes 
-                && <p>Cook time (min): {cookTimeInMinutes} </p> 
-            }
-            {image 
-                && <div className="image-container">
-                        <img src={image} alt={name} />
-                    </div>
-            }            
+        <div className="col-sm-6 col-md-4 col-lg-3">
+            <div className="card">
+                {image 
+                    && <img className="card-img-top" src={image} alt={name} />                       
+                } 
+                <div className="card-body text-align-left">
+                    <h5 className="card-title">{name}</h5>
+                    <p>Rating: {rating ? rating : ""}</p>
+                    {prepTimeInMinutes 
+                        && <p>Prep time (min): {prepTimeInMinutes} </p> 
+                    }
+                    {cookTimeInMinutes 
+                        && <p>Cook time (min): {cookTimeInMinutes} </p> 
+                    }
+                </div>
+            </div>
         </div>
     );
 

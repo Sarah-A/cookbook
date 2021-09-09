@@ -10,19 +10,25 @@ const Recipes: FunctionComponent<{recipes: RecipeType[]}> = ({recipes}) => {
             {              
                 !recipes.length 
                     ? (<h2>No recipes found!</h2> ) 
-                    : ( recipes.map((recipe) => {
-                        return (
-                            <Recipe 
-                                key={recipe.id}
-                                id={recipe.id}
-                                name={recipe.name}
-                                rating={recipe.rating}
-                                prepTimeInMinutes={recipe.prepTimeInMinutes}
-                                cookTimeInMinutes={recipe.cookTimeInMinutes}
-                                image={recipe.images?.length ? recipe.images[0] : null}
-                            />
-                        );
-                        }))
+                    : ( 
+                        <div className="row">
+                        {
+                            recipes.map((recipe) => {
+                            return (
+                                <Recipe 
+                                    key={recipe.id}
+                                    id={recipe.id}
+                                    name={recipe.name}
+                                    rating={recipe.rating}
+                                    prepTimeInMinutes={recipe.prepTimeInMinutes}
+                                    cookTimeInMinutes={recipe.cookTimeInMinutes}
+                                    image={recipe.images?.length ? recipe.images[0] : null}
+                                />
+                            );
+                            })
+                        }
+                        </div>
+                        )
                 }                 
         </div>
     );
