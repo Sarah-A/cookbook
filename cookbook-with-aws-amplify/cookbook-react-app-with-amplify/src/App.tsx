@@ -4,6 +4,7 @@ import Amplify from "aws-amplify";
 import { AmplifyAuthenticator, AmplifySignIn, AmplifySignOut, AmplifySignUp } from '@aws-amplify/ui-react';
 import { signInFields, signUpFields } from './Amplify/CustomAmplifyFields';
 import awsmobile from './aws-exports';
+import RecipesSearch from './components/RecipesSearch';
 
 Amplify.configure(awsmobile);
 
@@ -19,7 +20,7 @@ function App() : ReactElement {
           <h1>CookBook</h1>
         </header>      
         <main>     
-          <h2>This is where my main screen goes</h2>   
+          <RecipesSearch /> 
         </main>
       </AmplifyAuthenticator>
     </div>
