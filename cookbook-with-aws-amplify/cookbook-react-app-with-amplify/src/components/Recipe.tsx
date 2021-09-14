@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 
-interface RecipeType {
+export interface RecipeForDisplayType {
     id: string;
     name: string;
     rating?: number | null;
@@ -9,7 +9,7 @@ interface RecipeType {
     image?: string | null;
 }
 
-const Recipe: FunctionComponent<RecipeType> = (props: RecipeType) => {
+const Recipe: FunctionComponent<RecipeForDisplayType> = (props: RecipeForDisplayType) => {
     const {id, name, rating, prepTimeInMinutes, cookTimeInMinutes, image} = props;
 
     // TODO: Add a link to the recipe details (once I add them)
@@ -19,16 +19,16 @@ const Recipe: FunctionComponent<RecipeType> = (props: RecipeType) => {
         <div className="col-sm-6 col-md-4 col-lg-3">
             <div className="card">
                 {image 
-                    && <img className="card-img-top" src={image} alt={name} />                       
+                    && <img data-testid="recipe-card-image" className="card-img-top" src={image} alt={name} />                       
                 } 
                 <div className="card-body text-align-left">
-                    <h5 className="card-title">{name}</h5>
-                    <p>Rating: {rating ? rating : ""}</p>
+                    <h5 className="card-title" data-testid="recipe-card-title">{name}</h5>
+                    <p data-testid="recipe-card-rating">Rating: {rating ? rating : ""}</p>
                     {prepTimeInMinutes 
-                        && <p>Prep time (min): {prepTimeInMinutes} </p> 
+                        && <p data-testid="recipe-card-prep-time">Prep time (min): {prepTimeInMinutes} </p> 
                     }
                     {cookTimeInMinutes 
-                        && <p>Cook time (min): {cookTimeInMinutes} </p> 
+                        && <p data-testid="recipe-card-cook-time">Cook time (min): {cookTimeInMinutes} </p> 
                     }
                 </div>
             </div>

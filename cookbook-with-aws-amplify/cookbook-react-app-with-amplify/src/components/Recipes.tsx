@@ -13,8 +13,7 @@ const Recipes: FunctionComponent<{recipes: RecipeType[]}> = ({recipes}) => {
                     : ( 
                         <div className="row">
                         {
-                            recipes.map((recipe) => {
-                            return (
+                            recipes.map((recipe, index) => (
                                 <Recipe 
                                     key={recipe.id}
                                     id={recipe.id}
@@ -23,9 +22,9 @@ const Recipes: FunctionComponent<{recipes: RecipeType[]}> = ({recipes}) => {
                                     prepTimeInMinutes={recipe.prepTimeInMinutes}
                                     cookTimeInMinutes={recipe.cookTimeInMinutes}
                                     image={recipe.images?.length ? recipe.images[0] : null}
+                                    data-testid={`recipe-${index}`}
                                 />
-                            );
-                            })
+                            ))
                         }
                         </div>
                         )

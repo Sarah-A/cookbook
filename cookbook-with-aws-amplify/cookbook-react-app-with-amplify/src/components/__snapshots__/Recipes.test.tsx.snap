@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Recipes component When available recipes, should match expected snapshot 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <Recipe
+      cookTimeInMinutes={3}
+      data-testid="recipe-0"
+      id="1"
+      image="1.jpg"
+      name="Recipe1"
+      prepTimeInMinutes={2}
+      rating={1}
+    />
+    <Recipe
+      cookTimeInMinutes={4}
+      data-testid="recipe-1"
+      id="2"
+      image={null}
+      name="Recipe2"
+      prepTimeInMinutes={3}
+    />
+    <Recipe
+      data-testid="recipe-2"
+      id="3"
+      image={null}
+      name="Recipe3"
+      prepTimeInMinutes={4}
+      rating={3}
+    />
+  </div>
+</div>
+`;

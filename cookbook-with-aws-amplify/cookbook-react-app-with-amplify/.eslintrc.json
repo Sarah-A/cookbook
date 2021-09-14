@@ -38,7 +38,13 @@
     "rules": {
         "react/prop-types": 0,
         // "react/react-in-jsx-scope": 0 is new since you used to have to import React everywhere but now with the recent revision of React you don't need to. 0 means off. Can also use false instead.
-        "react/react-in-jsx-scope": 0
+        "react/react-in-jsx-scope": 0,
+        "jest/expect-expect" : [
+            "error",
+            {
+                "assertFunctionNames": ["expect", "verify*"]
+            }
+        ] 
     },
     "settings": {
         // eslint-plugin-react now requires you to inform of it what version of React you're using. 
@@ -57,5 +63,12 @@
               "alwaysTryTypes": true
             }
         }
-    }   
+    },
+    "overrides": [
+        {
+            "files": [ "**/*.test.js" ],
+            "env": { "jest": true },
+            "plugins": [ "jest" ]            
+        }
+      ]
 }
